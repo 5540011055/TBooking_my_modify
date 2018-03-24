@@ -266,6 +266,8 @@ $params['posted'] = $_SESSION[admin_user];
 $params['post_date'] = TIMESTAMP;
 $params['update_date'] = TIMESTAMP;
 $params['enable_comment'] = $_POST[ENABLE_COMMENT];
+
+$params['exp_gps'] = $_POST[exp_gps];
 /**
 * 
 * @var ********* START insert
@@ -497,6 +499,21 @@ $db->closedb ();
         </select>
         </label>
         &nbsp;</td>
+    </tr>
+    <script>
+    	$('#gps').change(function(){
+    		if($(this).val()=="Yes"){
+				$('#exp_gps_row').show();
+			}else{
+				$('#exp_gps_row').hide();
+			}
+    	});
+    </script>
+    <tr id="exp_gps_row">
+      <td align="right">วันหมดอายุ GPS : </td>
+      <td>
+      <input name="exp_gps" id="exp_gps" style="width:120px; FONT-SIZE:13px; " value="<?=$arr[other][exp_gps];?>" readonly="readonly" />
+      <img src="images/admin/dateselect.gif" alt="ondate" border="0" align="absmiddle" onClick="displayDatePicker('exp_gps', false, 'ymd', '-');" /><strong> </strong>&nbsp;</td>
     </tr>
     <tr>
       <td align="right">หมายเหตุ  : </td>
@@ -833,12 +850,12 @@ $db->closedb ();
     </script>
     <?php 
     	  if($arr[other][gps]=="Yes"){
-		  		$none_gps = 'display:block;';
+		  		$none_gps = '';
 		  }else{
 		  		$none_gps = 'display:none;';
 		  }
     	?>
-    <tr <?=$none_gps;?> id="exp_gps_row">
+    <tr style="<?=$none_gps;?>" id="exp_gps_row">
       <td align="right">วันหมดอายุ GPS : </td>
       <td>
       <input name="exp_gps" id="exp_gps" style="width:120px; FONT-SIZE:13px; " value="<?=$arr[other][exp_gps];?>" readonly="readonly" />
