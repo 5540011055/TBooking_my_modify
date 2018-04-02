@@ -268,6 +268,7 @@ $params['update_date'] = TIMESTAMP;
 $params['enable_comment'] = $_POST[ENABLE_COMMENT];
 
 $params['exp_gps'] = $_POST[exp_gps];
+$params['install_gps'] = $_POST[install_gps];
 /**
 * 
 * @var ********* START insert
@@ -503,13 +504,19 @@ $db->closedb ();
     <script>
     	$('#gps').change(function(){
     		if($(this).val()=="Yes"){
-				$('#exp_gps_row').show();
+				$('.exp_gps_row').show();
 			}else{
-				$('#exp_gps_row').hide();
+				$('.exp_gps_row').hide();
 			}
     	});
     </script>
-    <tr id="exp_gps_row">
+    <tr class="exp_gps_row">
+      <td align="right">วันติดตั้ง GPS : </td>
+      <td>
+      <input name="install_gps" id="install_gps" style="width:120px; FONT-SIZE:13px; " value="<?=$arr[other][install_gps];?>" readonly="readonly" />
+      <img src="images/admin/dateselect.gif" alt="ondate" border="0" align="absmiddle" onClick="displayDatePicker('install_gps', false, 'ymd', '-');" /><strong> </strong>&nbsp;</td>
+    </tr> 
+    <tr class="exp_gps_row">
       <td align="right">วันหมดอายุ GPS : </td>
       <td>
       <input name="exp_gps" id="exp_gps" style="width:120px; FONT-SIZE:13px; " value="<?=$arr[other][exp_gps];?>" readonly="readonly" />
@@ -577,6 +584,7 @@ $params['update_date'] = TIMESTAMP;
 $params['enable_comment'] = $_POST[ENABLE_COMMENT];
 
 $params['exp_gps'] = $_POST[exp_gps];
+$params['install_gps'] = $_POST[install_gps];
 /**
 * 
 * @var ********* START Update 
@@ -842,9 +850,9 @@ $db->closedb ();
     <script>
     	$('#gps').change(function(){
     		if($(this).val()=="Yes"){
-				$('#exp_gps_row').show();
+				$('.exp_gps_row').show();
 			}else{
-				$('#exp_gps_row').hide();
+				$('.exp_gps_row').hide();
 			}
     	});
     </script>
@@ -855,7 +863,13 @@ $db->closedb ();
 		  		$none_gps = 'display:none;';
 		  }
     	?>
-    <tr style="<?=$none_gps;?>" id="exp_gps_row">
+    <tr class="exp_gps_row" style="<?=$none_gps;?>">
+      <td align="right">วันติดตั้ง GPS : </td>
+      <td>
+      <input name="install_gps" id="install_gps" style="width:120px; FONT-SIZE:13px; " value="<?=$arr[other][install_gps];?>" readonly="readonly" />
+      <img src="images/admin/dateselect.gif" alt="ondate" border="0" align="absmiddle" onClick="displayDatePicker('install_gps', false, 'ymd', '-');" /><strong> </strong>&nbsp;</td>
+    </tr> 	
+    <tr style="<?=$none_gps;?>" class="exp_gps_row">
       <td align="right">วันหมดอายุ GPS : </td>
       <td>
       <input name="exp_gps" id="exp_gps" style="width:120px; FONT-SIZE:13px; " value="<?=$arr[other][exp_gps];?>" readonly="readonly" />
