@@ -25,6 +25,7 @@
 			$data[status] = $aaaa->status;
 			$data[photo_ref] = $aaaa->result->photos[0]->photo_reference;
 			$data[url] = $aaaa->result->url;
+			$data[html_attributions] = $aaaa->result->photos[0]->html_attributions;
 			header('Content-Type: application/json');
 			echo json_encode($data);
 ?>
