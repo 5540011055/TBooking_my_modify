@@ -291,7 +291,7 @@ $params['id'] = $last_id;
 * @var ********* END insert
 * 
 */		
-		$ProcessOutput .= "<BR><BR>";
+		$ProcessOutput .= "";
 		$ProcessOutput .= "<CENTER><A HREF=\"?name=admin&file=main\"><IMG SRC=\"images/icon/admin.png\" BORDER=\"0\"></A><BR><BR>";
 		$ProcessOutput .= "<FONT COLOR=\"#336600\"><B>Add Car  complete</B></FONT><BR><BR>";
 		$ProcessOutput .= "<A HREF=\"?name=admin/car&file=car\"><B>Back to Car </B></A>";
@@ -301,7 +301,7 @@ $params['id'] = $last_id;
 		//??
 		$ProcessOutput = $PermissionFalse ;
 	}
-	echo $ProcessOutput ;
+	echo '<iframe src="admin/admin/car/dropzone/iframe_test.php?id='.$last_id.'" style="border:0px;width:100%;height:80vh;" ></iframe><br/>'.$ProcessOutput ;
 }
 else if($_GET[op] == "other_add"){
 	//////////////////////////////////////////// ? Form
@@ -789,6 +789,31 @@ $db->closedb ();
             <label></label>
             </font></td>
         </tr>
+        <script>
+        	var $myText = $("#exp_insur");
+
+				$myText.data("value", $myText.val());
+
+				setInterval(function() {
+				    var data = $myText.data("value"),
+				        val = $myText.val();
+
+				    if (data !== val) {
+				        $myText.data("value", val);
+				        resetIframeImg();
+				    }
+				}, 100);
+        	function resetIframeImg(){
+        		var d = $("#exp_insur").val();
+				$('#iframe_img').html('<iframe src="admin/admin/car/dropzone/iframe_test.php?id=<?=$_GET[id];?>&date='+d+'" style="border:0px;width:100%;min-height:500px;" ></iframe>');
+			}
+        </script>
+        <tr>
+    	<td></td>
+    	<td id="iframe_img">
+    		<iframe src="admin/admin/car/dropzone/iframe_test.php?id=<?=$_GET[id];?>&date=<?=$arr[other][exp_insur];?>" style="border:0px;width:100%;min-height:500px;" ></iframe>
+    	</td>
+    </tr>
 		  <tr>
           <td align="right">วันหมดพรบ : </td>
           <td><font size="2" face="MS Sans Serif, Tahoma, sans-serif">
