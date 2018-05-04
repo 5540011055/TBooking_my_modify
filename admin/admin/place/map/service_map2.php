@@ -11,7 +11,7 @@ $db = New DB();
 set_time_limit(100000000000000000000000);
 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
-$table = Transferplace_3;
+$table = "web_transferplace_new";
 
 if($_GET[province]!=""){
 	$province = $_GET[province];
@@ -38,7 +38,7 @@ if($_GET[i_place_image]!=""){
 	$where_place_id = 'and check_place_id = "'.$check_place_id.'"';
 }*/
 $where = $where_pro." ".$where_aum." ".$where_status." ".$where_map." ".$where_img." ".$where_place_id;
-$res[place] = $db->select_query('SELECT id,topic,province FROM '.$table.' where id>0 '.$where.' order by id asc limit 1'); 
+$res[place] = $db->select_query('SELECT id,topic,province FROM '.$table.' where id>0 '.$where.' order by id asc '); 
 $count = $db->num_rows($table,'id',"id>0 ".$where);
 //echo $where;
 ?>

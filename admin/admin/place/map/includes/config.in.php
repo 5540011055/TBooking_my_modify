@@ -3,7 +3,7 @@ if (eregi("config.in.php",$PHP_SELF)) {
     die();
 }
 define("DB_HOST","localhost");
-define("DB_NAME","admin_test");
+define("DB_NAME","admin_web");
 define("DB_USERNAME","admin_MANbooking");
 define("DB_PASSWORD","252631MANbooking");
 define("GALLERY","web_gallery_place");

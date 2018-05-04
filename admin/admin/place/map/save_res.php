@@ -8,7 +8,7 @@ mysql_query("SET character_set_results=utf-8");
 
 if($_GET[save]=="transferplace_new"){
 	
-	$table = 'web_transferplace_new_3';
+	$table = 'web_transferplace_new';
 	$table_gal = 'web_gallery_place';
 	$data[place_id] = $_POST[place_id];
 	$data[lat] = $_POST[lat];
